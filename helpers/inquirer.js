@@ -73,15 +73,22 @@ const readInput = async (message) => {
             name: 'desc',
             message,
             validate(value){
-                if (this.validate.length === 0) {
-                    
+                if (value.length === 0) {
+                    return 'Please write a value';
                 }
+                return true;
             }
         }
     ]
+
+    const { desc } = await inquirer.prompt(question);
+
+    return desc;
+
 }
 
 module.exports = {
     inquirerMenu,
-    pause
+    pause,
+    readInput
 }
